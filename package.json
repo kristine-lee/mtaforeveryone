@@ -1,0 +1,26 @@
+{
+  "name": "accessible",
+  "version": "1.0.0",
+  "description": "accessible mta map",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristine-lee/stackathon.git"
+  },
+  "author": "kristine lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristine-lee/stackathon/issues"
+  },
+  "homepage": "https://github.com/kristine-lee/stackathon#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
