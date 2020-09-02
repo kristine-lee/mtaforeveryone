@@ -1,44 +1,65 @@
+//configure the Express(HTML) server here
+
 const express = require('express');
 const path = require('path');
 const app = express();
-const { ApolloServer, gql } = require('apollo-server-express');
-const cors = require('cors');
+// const cors = require('cors');
 const session = require('express-session');
 const morgan = require('morgan');
+const dotenv = require('dotenv')
+const { ApolloServer } = require('apollo-server-express')
+
+// const apollo = require('./graphql')
+
 const PORT = process.env.PORT || 3030
 
 module.exports = app
 
-//constructing a schema using graphQL language
-// const typeDefs = gql`
-//     type Query {
-//       hello: String
-//   }
-// `;
+require('dotenv').config()
 
-//constructing a resolver
-// const resolvers = {
-//   Query: {
-//     hello: () => 'Hello world!',
-//   },
-// };
+if (process.env.NODE_ENV !== 'production') require('../secrets')
 
-// const server = new ApolloServer({ typeDefs, resolvers });
 // server.applyMiddleware({ app });
 
+//logging middleware;
 app.use(morgan('dev'))
-app.use(cors())
+// app.use(cors())
+
+//body parsing
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-//app.use('/api', require('./api'))
+//session middleware to persist a user
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'yall are going to jail periodt!',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+  })
+)
+
+//serving static files
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
+//initialize apollo server
+const server = new ApolloServer({
+  introspection: true,
+  playground: true,
+  debug: true,
+  // TODO: need to import typedefs and resolvers
+  typeDefs,
+  resolvers,
+})
 
 
+//let's send index.html babey
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 });
+
+//apply apollo server as middleware (express)
+server.applyMiddleware({app, path: '/graphql'})
 
 //error-handling middleware
 app.use((err, req, res, next) => {
@@ -51,3 +72,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () =>
     console.log(`Starting the party on port: ${PORT}`)
   )
+

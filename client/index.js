@@ -1,9 +1,41 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {Router} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
+import { RestLink } from 'apollo-link-rest';
+import App from './app'
+import store from './redux'
+
+const restLink = new RestLink({
+  uri: 'https://data.ny.gov/resource/i9wp-a4ja.json/',
+  //https://data.ny.gov/resource/i9wp-a4ja.geojson?ADA=TRUE
+  //https://medium.com/@brygrill/creating-a-geojson-featurecollection-type-for-graphql-352591451b4a
+  //https://github.com/eturino/apollo-link-scalars to define geoJSON custom scalar type
+  //https://github.com/larkintuckerllc/apollo-client-rest/blob/master/src/apis/todos.ts apollo rest api supports out of the box returning json objects (or arrays of them)
+});
+
+const cache = new InMemoryCache()
+
+const client = new ApolloClient({
+  link: restLink,
+  cache: cache,
+  connectToDevTools: true,
+  clientState: {
+    defaults: {
+      clientLocation: [0,0]
+    }
+  },
+})
 
 ReactDOM.render(
-  <div>Hello, world!</div>,
-  document.getElementById('app') // make sure this is the same as the id of the div in your index.html
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+    <Router>
+     <App />
+    </Router>
+    </Provider>
+  </ApolloProvider>,
+  // <div>Hello, world!</div>,
+  document.getElementById('app')
 );

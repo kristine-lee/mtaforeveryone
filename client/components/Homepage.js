@@ -1,12 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
+import styled from 'styled-components'
 
-export class Homepage extends React.Component {
+//I'm guessing this is going to be like a container?
 
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+const Wrapper = styled.div`
+  padding: 4em;
+  background: papayawhip;
+  `;
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Homepage = () => {
+  const [loadState, setLoadState] = useState(false)
+
+  return (
+      <Wrapper>
+        <Title>
+          The Subway Is Every New Yorker's Right
+        </Title>
+      </Wrapper>
+  )
 }
+
+export default Homepage

@@ -1,0 +1,5 @@
+/*refactor into styled components after this*/
+.mapWrapper {
+  width: 100vw;
+  height: 100vh;
+}
