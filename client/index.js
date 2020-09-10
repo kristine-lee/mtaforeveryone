@@ -8,7 +8,8 @@ import App from './app'
 import store from './redux'
 
 const restLink = new RestLink({
-  uri: 'https://data.ny.gov/resource/i9wp-a4ja.json/',
+  // uri: 'https://data.ny.gov/resource/i9wp-a4ja.json/',
+  uri: 'https://data.ny.gov/resource/i9wp-a4ja.geojson?ADA=TRUE'
   //https://data.ny.gov/resource/i9wp-a4ja.geojson?ADA=TRUE
   //https://medium.com/@brygrill/creating-a-geojson-featurecollection-type-for-graphql-352591451b4a
   //https://github.com/eturino/apollo-link-scalars to define geoJSON custom scalar type
@@ -21,20 +22,20 @@ const client = new ApolloClient({
   link: restLink,
   cache: cache,
   connectToDevTools: true,
-  clientState: {
-    defaults: {
-      clientLocation: [0,0]
-    }
-  },
+  // clientState: {
+  //   defaults: {
+  //     clientLocation: [0,0]
+  //   }
+  // },
 })
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
     <Router>
      <App />
     </Router>
-    </Provider>
+    {/* </Provider> */}
   </ApolloProvider>,
   // <div>Hello, world!</div>,
   document.getElementById('app')

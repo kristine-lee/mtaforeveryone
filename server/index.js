@@ -2,12 +2,18 @@
 
 const express = require('express');
 const path = require('path');
+const { db } = require('./db')
 const app = express();
 // const cors = require('cors');
 const session = require('express-session');
 const morgan = require('morgan');
-const dotenv = require('dotenv')
-const { ApolloServer } = require('apollo-server-express')
+const dotenv = require('dotenv');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sessionStore = new SequelizeStore({ db });
+const { ApolloServer } = require('apollo-server-express');
+
+const typeDefs = require('./data/userSchema')
+const resolvers = require('./data/userResolver')
 
 // const apollo = require('./graphql')
 
@@ -29,6 +35,9 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+//serving static files
+app.use(express.static(path.join(__dirname, '..', 'public')))
+
 //session middleware to persist a user
 app.use(
   session({
@@ -39,24 +48,19 @@ app.use(
   })
 )
 
-//serving static files
-app.use(express.static(path.join(__dirname, '..', 'public')))
+//let's send index.html babey
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+});
 
 //initialize apollo server
 const server = new ApolloServer({
   introspection: true,
   playground: true,
   debug: true,
-  // TODO: need to import typedefs and resolvers
   typeDefs,
   resolvers,
 })
-
-
-//let's send index.html babey
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../public/index.html'))
-});
 
 //apply apollo server as middleware (express)
 server.applyMiddleware({app, path: '/graphql'})
@@ -69,7 +73,18 @@ app.use((err, req, res, next) => {
   }
 );
 
-app.listen(PORT, () =>
-    console.log(`Starting the party on port: ${PORT}`)
-  )
+const syncDb = () => db.sync()
 
+//for graphql
+// server.listen({ port: process.env.PORT || 4141 }).then(({ url }) => {
+//   console.log(`🚀Yay! Server ready at ${url}`)
+// })
+
+app.listen(PORT, function () {
+  try {
+  console.log("HTTP server listening on port", PORT)
+  syncDb()
+  } catch (error) {
+    console.error(error)
+  }}
+  )

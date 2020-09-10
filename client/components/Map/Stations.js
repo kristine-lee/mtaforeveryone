@@ -2,25 +2,25 @@ import React from 'react'
 import { useQuery, useLazyQuery, gql } from '@apollo/client'
 import { GeoLocateControl, Source, Layer } from 'react-map-gl'
 import Loading from '../Loading'
+import MockData from '../mockdata.json'
 
 //do i need to change this into geoJson?
-const GET_STATIONS = gql`
-  query getStations {
-    station @rest(type: "Station", path: "?ADA=TRUE&entry=YES") {
-      data @type(name: "Station") {
-        station_name
-        corner
-        entrance_type
-        entrance_longitude
-        entrance_latitude
-      }
-    }
-  }
-
-`
+// const GET_STATIONS = gql`
+//   query getStations {
+//     station @rest(type: "Station", path: "?ADA=TRUE&entry=YES") {
+//       data @type(name: "Station") {
+//         station_name
+//         corner
+//         entrance_type
+//         entrance_longitude
+//         entrance_latitude
+//       }
+//     }
+//   }
+//`
 
 const Stations = () => {
-  const { loading, error, data } = useQuery(GET_STATIONS)
+  // const { loading, error, data, fetchMore } = useQuery(GET_STATIONS)
   const [station, setStation] = useState({
     "station_name": "",
     "corner": "",
@@ -40,7 +40,7 @@ const Stations = () => {
 
   return (
     <>
-    <Source id="stations" type="geojson" data={GET_STATIONS}>
+    <Source id="stations" type="geojson" data={MockData}>
     <Layer id="station-markers" type="symbol" source="geojson" />
     </Source>
     </>
@@ -49,5 +49,6 @@ const Stations = () => {
 
 }
 
+export default Stations
 //markers of accessible stations
 //another component for grabbing the user's geolocation and then calculating

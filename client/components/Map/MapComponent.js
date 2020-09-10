@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 // import { useQuery, gql } from '@apollo/client'
-import ReactMapGL, { Source, Layer, Feature } from 'react-map-gl'
+import ReactMapGL, { Source, Layer, Feature, GeoLocateControl } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Stations from './Stations'
 
@@ -18,8 +18,6 @@ width: 100%;
 
 const MapComponent = () => {
   const [viewport, setViewport] = useState({
-    width: 400,
-    height: 400,
     longitude: -74.0060,
     latitude: 40.7128,
     zoom: 8,
@@ -27,7 +25,18 @@ const MapComponent = () => {
     pitch: 0
   });
 
+
   const mapRef = useRef(null);
+
+  // useEffect(() => {
+  //   getUserPosition()
+  // }, [])
+
+  // const getUserPosition = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(position => {})
+  //   }
+  // }
 
   // useEffect(() => {
   //   const map = reactMap.getMap();
@@ -39,12 +48,18 @@ const MapComponent = () => {
 
   return (
     <ReactMapGL {...viewport}
-      mapboxToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      mapboxToken={"pk.eyJ1Ijoia3Jpc3RpbmUwMTA1IiwiYSI6ImNrYzBvNHRhMzAwdzUyem53N2UzdDZ3YXkifQ.GWnxqxDa7O_xseRXf5Jumw"}
       onViewportChange={newViewport => {
         setViewport({ ...newViewport });
       }}>
         markers here
       <Stations />
+      <GeolocateControl
+          positionOptions={{enableHighAccuracy: true}}
+          trackUserLocation={true}
+        />
       </ReactMapGL>
   )
 }
+
+export default MapComponent
