@@ -6,6 +6,9 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest';
 import App from './app'
 import store from './redux'
+//import mapboxgl from 'mapbox-gl';
+
+//mapboxgl.accessToken = "pk.eyJ1Ijoia3Jpc3RpbmUwMTA1IiwiYSI6ImNrZXgzNWIxcTA1cGIydGw2aGczZTVjcTIifQ.k66a5jUyK9govXmsLGDIFw";
 
 const restLink = new RestLink({
   // uri: 'https://data.ny.gov/resource/i9wp-a4ja.json/',

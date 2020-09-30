@@ -1,6 +1,8 @@
 import React from 'react'
 import { CircularProgress } from '@material-ui/core'
 
-export default Loading = () => {
-  return <CircularProgress size={10}/>
+const Loading = () => {
+  return (<CircularProgress size={10}/>)
 }
+
+export default Loading

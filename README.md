@@ -3,3 +3,7 @@ Would you like to know where the nearest accessible MTA stations are? MTAForEver
 
 Built with:
 React, MapBoxGL, GraphQL, Apollo Client/Server, Express.JS, Node, PostgreSQL
+
+You need an API key from Mapbox
+
+To run this app in dev mode: npm run start-dev

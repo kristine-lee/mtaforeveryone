@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useQuery, useLazyQuery, gql } from '@apollo/client'
 import { GeoLocateControl, Source, Layer } from 'react-map-gl'
-import Loading from '../Loading'
+import Loading from '../Loading.js'
 import MockData from '../mockdata.json'
 
 //do i need to change this into geoJson?
@@ -25,18 +25,18 @@ const Stations = () => {
     "station_name": "",
     "corner": "",
     "entrance_type": "Elevator",
-    "entrance_longitude": 0,
-    "entrance_latitude": 0
+    "entrance_longitude": -74.0060,
+    "entrance_latitude": 40.7128
   })
 
-  if (error) return <h1>Something went wrong!</h1>
-  if (loading) return <Loading />
+  // if (error) return <h1>Something went wrong!</h1>
+  // if (loading) return <Loading />
 
-  useEffect(() => {
-    if(!loading && !error){
-      setStation(data.elements)
-    }
-  }, [station, data, loading])
+  // useEffect(() => {
+  //   if(!loading && !error){
+  //     setStation(data.elements)
+  //   }
+  // }, [station, data, loading])
 
   return (
     <>
