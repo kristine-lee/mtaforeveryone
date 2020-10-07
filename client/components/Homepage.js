@@ -14,6 +14,7 @@ const Title = styled.h1`
   color: palevioletred;
 `;
 
+
 const Homepage = () => {
   const [loadState, setLoadState] = useState(false)
 

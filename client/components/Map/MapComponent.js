@@ -1,9 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 // import { useQuery, gql } from '@apollo/client'
-import ReactMapGL, { Marker, Source, Layer, GeolocateControl, NavigationControl } from 'react-map-gl'
+import ReactMapGL, { Marker, Source, GeolocateControl, NavigationControl } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Stations from './Stations'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
 
@@ -72,8 +71,8 @@ useEffect(() => {
 
   // }, [viewport])
 
-//TODO: import icons; make marker for user and render it (see: streetArtMap)
 //TODO: add bounds to the viewport
+//TODO: render dummy data onto map
 
   return (
     <>
@@ -98,7 +97,6 @@ useEffect(() => {
        </Marker>
      )}
      </ReactMapGL>
-      <Stations />
       </>
   )
 }
