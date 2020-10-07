@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 // import { useQuery, gql } from '@apollo/client'
 import ReactMapGL, { Marker, Source, GeolocateControl, NavigationControl } from 'react-map-gl'
+import Stations from './Stations'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
@@ -72,7 +73,6 @@ useEffect(() => {
   // }, [viewport])
 
 //TODO: add bounds to the viewport
-//TODO: render dummy data onto map
 
   return (
     <>
@@ -83,6 +83,7 @@ useEffect(() => {
       }}
       width="100vw" height={400}>
         markers here
+        <Stations />
         <GeolocateControl
         positionOptions={{enableHighAccuracy: true}}
         trackUserLocation={true}

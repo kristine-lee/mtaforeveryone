@@ -23,6 +23,7 @@ const client = new ApolloClient({
   link: restLink,
   cache: cache,
   connectToDevTools: true,
+  typeDefs: {}
   // clientState: {
   //   defaults: {
   //     clientLocation: [0,0]
