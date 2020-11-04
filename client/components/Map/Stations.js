@@ -23,7 +23,7 @@ import { faSubway } from '@fortawesome/free-solid-svg-icons';
 //`
 //TODO: 3. wrap the results of the api call in useMemo so you dont have to rerender it every time https://dmitripavlutin.com/dont-overuse-react-usecallback/ OR useSelecter (like in streetArts, just make it into a different component)
 
-//TODO: graphql query works, but markers do not render
+//TODO: graphql query works, but markers do not render; they're not showing up on the map (on React Dev Tools; look at Components). Have them render
 
 
 const Stations = () => {
