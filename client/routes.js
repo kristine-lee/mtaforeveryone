@@ -1,6 +1,5 @@
 //all the redux routes that should be on the app
 import React from 'react'
-import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import Homepage from './components/Homepage'
 

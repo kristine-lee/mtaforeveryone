@@ -1,13 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest';
-import App from './app'
-//import mapboxgl from 'mapbox-gl';
+import App from './App'
 
-//mapboxgl.accessToken = "pk.eyJ1Ijoia3Jpc3RpbmUwMTA1IiwiYSI6ImNrZXgzNWIxcTA1cGIydGw2aGczZTVjcTIifQ.k66a5jUyK9govXmsLGDIFw";
 
 const restLink = new RestLink({
   uri: 'https://data.ny.gov/resource/i9wp-a4ja.json/',
