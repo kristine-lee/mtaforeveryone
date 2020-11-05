@@ -5,6 +5,12 @@ import { GET_DISTANCE } from './getDistance';
 const StyledButton = styled.button`
   background-color: #FFC1CC
   aria-label: "calculate"
+  color: palevioletred;
+  font-size: 1em;
+  margin: 0;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
 `
 
 // import { setOriginStation,
