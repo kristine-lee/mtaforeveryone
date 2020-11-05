@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
-import ReactMapGL, { Marker, Source, GeolocateControl, NavigationControl } from 'react-map-gl';
+import ReactMapGL, { Marker, GeolocateControl, NavigationControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
@@ -57,21 +57,6 @@ useEffect(() => {
   getUserLocation()
 }, [userLocation])
 
-
-
-  // const getUserPosition = () => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(position => {})
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   const map = reactMap.getMap();
-  //   map.on('load', () => {
-  //     map.addLayer({})
-  //   })
-
-  // }, [viewport])
 
 //TODO: add bounds to the viewport
 

@@ -10,6 +10,5 @@ secrets.js
 npm-debug.log
 yarn-error.log
 **/.vscode/
-Map.js
 ToDo.md
-AccessibilityChecklist.md
+AccessiblityChecklist.md
