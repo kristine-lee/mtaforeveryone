@@ -11,3 +11,10 @@ let a =
    (1 - Math.cos(dLong))/2;
 return R * 2 * Math.asin(Math.sqrt(a));
 }
+
+export const keepMapWithinBounds = (latitude, longitude, SW, NE) => {
+   const [ [ swLong, swLat ] ] = SW
+   const [ [ neLong, neLat ] ] = NE
+   return longitude < swLong || longitude > neLong || latitude < swLat || latitude > neLat;
+}
+

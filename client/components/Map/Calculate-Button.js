@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import propTypes from 'prop-types';
-import { GET_DISTANCE } from './getDistance';
+import { GET_DISTANCE } from './utils';
 import Results from './Calculated-Results';
 
 const StyledButton = styled.button`

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest';
-import App from './App'
+import App from './App';
+import typeDefs from './typeDefs'
 
 
 const restLink = new RestLink({
@@ -20,21 +21,14 @@ const client = new ApolloClient({
   link: restLink,
   cache: cache,
   connectToDevTools: true,
-  typeDefs: {}
-  // clientState: {
-  //   defaults: {
-  //     clientLocation: [0,0]
-  //   }
-  // },
+  typeDefs: typeDefs
 })
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    {/* <Provider store={store}> */}
     <Router>
      <App />
     </Router>
-    {/* </Provider> */}
   </ApolloProvider>,
   // <div>Hello, world!</div>,
   document.getElementById('app')

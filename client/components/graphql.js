@@ -13,6 +13,8 @@ export const GET_STATIONS = gql`
   }
 `
 
+//TODO: filter information received so there are no repeats
+
 // const GET_STATIONS = gql`
   // query getStations {
   //   station @rest(type: "Station", path: "?ADA=TRUE&entry=YES") {

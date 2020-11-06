@@ -16,7 +16,6 @@ const Title = styled.h1`
 
 
 const Homepage = () => {
-  const [loadState, setLoadState] = useState(false)
 
   return (
       <Wrapper>
