@@ -60,6 +60,8 @@ useEffect(() => {
 
 //TODO: add bounds to the viewport
 
+//TODO: useref for the react map component
+
   return (
     <>
     <ReactMapGL {...viewport}
@@ -67,8 +69,8 @@ useEffect(() => {
       onViewportChange={newViewport => {
         setViewport(newViewport);
       }}
-      width="100vw" height={400}>
-        markers here
+      width="100vw"
+      height={400}>
         <Stations />
         <GeolocateControl
         positionOptions={{enableHighAccuracy: true}}

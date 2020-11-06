@@ -15,10 +15,12 @@ padding: 4em;
 // bottom: 0;
 // `
 
-const Results = () => {
+const Results = ({distance}) => {
   return (
     <ResultsContainer>
-      Click Here:
+      This is how far you are from your nearest accessible MTA station.
+
+      {distance}
     </ResultsContainer>
   )
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import Routes from './routes'
 // import Footer from './components/Footer'
 import MapComponent from './components/Map/MapComponent'
-import Results from './components/Map/Calculated-Results'
 import TakeAction from './components/Take-Action-Page'
 
 const App = () => {
@@ -11,7 +10,6 @@ const App = () => {
     <>
     <Routes />
     <MapComponent />
-    <Results />
     <TakeAction />
     </>
   )
