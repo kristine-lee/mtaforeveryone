@@ -17,3 +17,4 @@ export default class Markers extends React.PureComponent {
     )
   }
 }
+//pureComponent so it doesn't re-render every time the viewport changes

@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest';
 import App from './App';
-import typeDefs from './typeDefs'
+import { typeDefs } from './typeDefs'
 
 
 const restLink = new RestLink({

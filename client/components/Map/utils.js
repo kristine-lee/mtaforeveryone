@@ -12,9 +12,9 @@ let a =
 return R * 2 * Math.asin(Math.sqrt(a));
 }
 
-export const keepMapWithinBounds = (latitude, longitude, SW, NE) => {
-   const [ [ swLong, swLat ] ] = SW
-   const [ [ neLong, neLat ] ] = NE
-   return longitude < swLong || longitude > neLong || latitude < swLat || latitude > neLat;
-}
 
+export const keepMapWithinBounds = (latitude, longitude, maxBounds) => {
+   const [[swLng, swLat], [neLng, neLat]] = maxBounds;
+
+    return longitude < swLng || longitude > neLng || latitude < swLat || latitude > neLat;
+}

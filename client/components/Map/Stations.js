@@ -40,7 +40,8 @@ const Stations = () => {
           closeButton={true}
           closeOnClick={false}
           onClose={() => setSelectedStation(null)}>
-          Name: {station_name}
+          Selected Station: {station_name}<br />
+          <button>Calculate Distance</button>
         </Popup>
     )
     )

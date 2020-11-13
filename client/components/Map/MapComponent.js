@@ -8,6 +8,9 @@ import Stations from './Stations';
 import CalculateButton from './Calculate-Button';
 import {keepMapWithinBounds} from './utils'
 
+//maxBounds: https://docs.mapbox.com/mapbox-gl-js/example/restrict-bounds/
+//https://github.com/visgl/react-map-gl/issues/786
+
 const mapBody = styled.div`
 margin: 0;
 padding: 0;
@@ -29,13 +32,20 @@ const MapComponent = () => {
     pitch: 0,
   });
 
-  const handleViewportChange = (newViewport) => {
-    let SW = [-74.270176, 40.424795];
-    let NE = [-73.622982, 40.920462];
-    //longitude must be greater than South and less than North (because negatives lmao)
-    //latitude must be less than West and greater than East
-    if (!keepMapWithinBounds(newViewport.longitude, newViewport.latitude, SW, NE)) setViewport(newViewport)
-  }
+
+  const maxBounds = [[-74.270176, 40.424795], [-73.622982, 40.920462]]
+
+  const handleViewportChange = (viewport) => {
+    if (
+      !keepMapWithinBounds(
+        viewport.latitude,
+        viewport.longitude,
+        maxBounds
+      )
+    ) {
+      setViewport(viewport);
+    }
+  };
 
 //user must have geolocation turned on
   const [geolocationSupport, isgeolocationSupported] = useState(true);
@@ -76,8 +86,11 @@ useEffect(() => {
     <>
     <ReactMapGL
       {...viewport}
+      // onViewportChange={viewport => {
+      //   setViewport(viewport);
+      // }}
       onViewportChange={handleViewportChange}
-      mapboxApiAccessToken={"pk.eyJ1Ijoia3Jpc3RpbmUwMTA1IiwiYSI6ImNrZXlxY3NzdDBidjAyeXFjcHFoZTJjMWwifQ._CwmRc-zBpkfo4hKWgngBQ"}
+      mapboxApiAccessToken="pk.eyJ1Ijoia3Jpc3RpbmUwMTA1IiwiYSI6ImNrZXlxY3NzdDBidjAyeXFjcHFoZTJjMWwifQ._CwmRc-zBpkfo4hKWgngBQ"
       width="100vw"
       height={400}>
         <Stations />
