@@ -1,11 +1,23 @@
-import React, { useEffect } from "react";
-import { shallow, mount } from "enzyme";
-import MapComponent from './MapComponent'
+import * as React from 'react';
+import '@testing-library/jest-dom/extend-expect';
+import {render, screen} from '@testing-library/react';
+import MapComponent from './MapComponent';
 
-it("renders correctly", () => {
-  const wrapper = mount(<MapComponent />);
-  expect(wrapper.state("error")).toEqual(null);
-});
+afterEach(cleanup);
+
+// describe('<MapComponent />', () => {
+//   it("renders correctly", () => {
+//     const wrapper = mount(<MapComponent />);
+//     expect(wrapper.state("error")).toEqual(null);
+//   });
+// })
+
+test('Map renders', () => {
+  render(<MapComponent />)
+
+  expect(screen).toContain(<MapComponent />)
+})
+
 
 
 // describe ("User Marker", () => {

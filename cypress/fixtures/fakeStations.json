@@ -1,0 +1,22 @@
+[
+  {
+    "entrance_latitude": 40.684462,
+    "entrance_longitude": -73.978758,
+    "station_name": "Atlantic Avenue-Barclay Center"
+  },
+  {
+    "entrance_latitude": 40.7342,
+    "entrance_longitude": -73.9875,
+    "station_name": "14th Street-Union Station"
+  },
+  {
+    "entrance_latitude": 40.818,
+    "entrance_longitude": -73.927,
+    "station_name": "149th Street-Grand Concourse"
+  },
+  {
+    "entrance_latitude": 40.742835362,
+    "entrance_longitude": -73.8681215275,
+    "station_name": "Junction Boulevard"
+  }
+]
